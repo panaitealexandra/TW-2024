@@ -1,0 +1,114 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container2 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    
+    
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+
+header {
+    color: black;
+    padding: 20px 0;
+    
+}
+
+header h1 {
+    font-size: 28px;
+    text-align: center;
+}
+
+header div i {
+    float: right;
+    margin-right: 20px;
+}
+
+
+/* Stiluri pentru meniu */
+#meniu {
+   background-color: #333;
+    color: #fff;
+    display: none;
+    position: absolute;
+    top: 130px;
+    right: 0;
+    width: 230px;
+    padding-top: 550px;
+}
+
+#meniu:target {
+    display: block;
+}
+
+/* Stiluri pentru butonul de meniu */
+#meniu-buton {
+    cursor: pointer;
+}
+
+/* Stiluri pentru meniul drop-down */
+#meniu ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+#meniu ul li {
+     padding: 0;
+    
+ 
+    
+    
+}
+
+#meniu ul li a {
+     color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+
+}
+
+
+
+#main-content {
+     background-image: url('/home/eu/Documents/Feedback. file1/feedback.jpg');
+    background-size: cover; /* pentru a asigura că imaginea se va întinde pe întreaga pagină */
+    background-position: center; /* pentru a centra imaginea pe pagina */
+    color: #fff; /* pentru a asigura contrastul textului cu imaginea de fundal */
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
