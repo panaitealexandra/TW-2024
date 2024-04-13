@@ -1,0 +1,99 @@
+header {
+    background-color: black; 
+    color: white;
+    padding: 2%; /* spatiere intre continut si margini */
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+}
+
+body {
+    font-family: Platypi; 
+    margin: 0; 
+    padding: 0; 
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+.menu-btn a {
+    margin-left: 10px; 
+    color: white; 
+    text-decoration: none; /* fara subliniere */
+}
+
+.menu-btn a:hover {
+    text-decoration: underline; /* subliniaza la hover */
+}
+
+footer {
+    background-color: black; 
+    color: white; 
+    padding: 20px; /* spatiere interna */
+    display: flex; 
+    justify-content: space-between; /* spatiere uniforma intre elemente */
+}
+
+.contact-section,
+.about-section {
+    flex: 0 0 45%; 
+    text-align: center; 
+}
+
+.contact-section h2,
+.about-section h2 {
+    margin-top: 0; 
+    text-align: center; 
+}
+
+.container {
+    max-width: 1200px; 
+    margin: 0 auto; /* margini auto pentru centrat */
+    padding: 5px 20px; 
+}
+
+.event {
+    display: flex; 
+    margin-bottom: 20px; 
+}
+
+.event-info,
+.event-image {
+    flex: 1; /* partajeaza spatiul disponibil */
+}
+
+.event-info {
+    background-color: #f3f3f3; 
+    padding: 20px; 
+}
+
+.event-image img {
+    max-width: 100%; 
+    height: auto; 
+}
+
+@media (max-width: 768px) {
+    .event {
+        flex-direction: column; /* elemente in coloana */
+    }
+
+    .event-info,
+    .event-image {
+        width: 100%; 
+    }
+
+    .event-info {
+        margin-top: 10px; 
+    }
+}
+
+.event-image img {
+    max-width: 100%; 
+    height: auto; 
+    transition: transform 0.3s ease; /* animare lina la hover */
+}
+
+.event-image img:hover {
+    transform: scale(1.1); /* mareste imaginea la hover */
+}
