@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div>
+        <h1>Provide Feedback</h1>
+        <img src="pics/feedback.png">
+        <h3>Form Name: *nume*</h2>
+        <h3>Category: *categorie*</h3>
+        <p>Feedback Period: *mm/dd/yyy* to *mm/dd/yyy*</p>
+        
+        <form action="" method="post">
+            <input type="hidden" name="form_id" value="">
+            
+            <label for="emotion">Select your emotion:</label>
+            <select id="emotion" name="emotion" required>
+                <option value="joy">Joy</option>
+                <option value="trust">Trust</option>
+                <option value="fear">Fear</option>
+                <option value="surprise">Surprise</option>
+                <option value="sadness">Sadness</option>
+                <option value="disgust">Disgust</option>
+                <option value="anger">Anger</option>
+                <option value="anticipation">Anticipation</option>
+            </select>
+            <!--<label for="form_name">Tell us your thoughts:</label>
+            <input type="text" id="form_name" name="form_name" required>-->
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </div>
+</body>
+</html>
