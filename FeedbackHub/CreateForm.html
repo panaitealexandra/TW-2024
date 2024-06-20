@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Create Feedback Form</title>
+</head>
+<body>
+    <div>
+        <h1>Create Feedback Form</h1>
+        <form action="create_feedback_form.php" method="post" enctype="multipart/form-data">
+            
+            <label for="image">Image of the "thing":</label>
+            <input class="filebutton" type="file" id="image" name="image" accept="image/*" required>
+
+            <label for="form_name">Form Name:</label>
+            <input type="text" id="form_name" name="form_name" required>
+            
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required>
+            
+            <label for="start_date">Start Date:</label>
+            <input type="datetime-local" id="start_date" name="start_date" required>
+            
+            <label for="end_date">End Date:</label>
+            <input type="datetime-local" id="end_date" name="end_date" required>
+            
+            <button type="submit">Create Form</button>
+        </form>
+    </div>
+</body>
+</html>
