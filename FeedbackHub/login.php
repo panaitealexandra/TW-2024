@@ -13,12 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['password'])) {
             session_start();
             $_SESSION['user_id'] = $row['id'];
-            echo "Logare reușită!";
+            header('Location: Profil.php');
+            exit();
         } else {
-            echo "Parolă incorectă.";
+            echo "Invalid password.";
         }
     } else {
-        echo "Numele de utilizator nu există.";
+        echo "No user found with that username.";
     }
 
     $conn->close();

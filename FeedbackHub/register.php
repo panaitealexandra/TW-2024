@@ -9,9 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$password')";
     
     if ($conn->query($sql) === TRUE) {
-        echo "Înregistrare reușită!";
+        header('Location: Login.html');
     } else {
-        echo "Eroare: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
     $conn->close();

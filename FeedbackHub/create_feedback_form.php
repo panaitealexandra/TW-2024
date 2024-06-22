@@ -1,8 +1,15 @@
 <?php
+session_start();  
+
 include 'config.php';
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_id = $_SESSION['user_id']; // Presupunem că utilizatorul este autentificat și id-ul său este stocat în sesiune.
+    $user_id = $_SESSION['user_id']; 
     $form_name = $_POST['form_name'];
     $category = $_POST['category'];
     $start_date = $_POST['start_date'];
@@ -16,9 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             VALUES ('$user_id', '$target_file', '$form_name', '$category', '$start_date', '$end_date')";
     
     if ($conn->query($sql) === TRUE) {
-        echo "Formular creat cu succes!";
+        header("Location: FeedbackForms.php");
     } else {
-        echo "Eroare: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
     $conn->close();

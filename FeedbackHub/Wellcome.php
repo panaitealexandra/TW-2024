@@ -7,14 +7,21 @@
     <link rel="stylesheet" href="styleWellcome.css">
 </head>
 <body>
+    <?php
+    session_start();
+    $isLoggedIn = isset($_SESSION['user_id']);
+    ?>
     <!-- Continutul site-ului -->
     <header>
         <div class="navbar">
             <a href="#section1">Home</a>
             <a href="#section2">Purpose</a>
             <a href="Login.html">Login</a>
-            <a href="FeedbackForms.html">Feedback</a>
-            <a href="Stats.html">Statistics</a>
+            <a href="FeedbackForms.php">Feedback</a>
+            <a href="Stats.php">Statistics</a>
+            <?php if ($isLoggedIn): ?>
+                <a href="Profil.php">Profile</a>
+            <?php endif; ?>
             <a href="#footer">Contact</a>
         </div>
     </header>
@@ -28,35 +35,31 @@
         <section id="section2">
             <div class="left-column">
                 <p>FeedbackHub is the ideal platform for sharing and receiving honest opinions on any topic. Users can evaluate services, products, and experiences, contributing to their continuous improvement. Join our community and help build a better-informed world through constructive feedback.</p>
-                <a href="CreateForm.html" class="button">Feedback now</a>            
+                <a href="CreateForm.php" class="button">Feedback now</a>            
             </div>
             <div class="right-column">
-                <img src="pics/Feedback1.png">
+                <img src="pics/Feedback1.png" alt="Feedback Image">
             </div>
         </section>
         <section id="section3">
             <h2>What can you do on our platform?</h2>
             <div class="columns-container">
                 <div class="column">
-                    <h3></h3>
-                    <h3></h3>
-                    <img src="pics/flower.png">
+                    <img src="pics/flower.png" alt="Image 1">
                 </div>
                 <div class="column">
-                    <h3></h3>
-                    <img src="pics/scrie.png" class="vertical-images">
-                    <img src="pics/lista.png" class="vertical-images">
+                    <img src="pics/scrie.png" class="vertical-images" alt="Image 2">
+                    <img src="pics/lista.png" class="vertical-images" alt="Image 3">
                 </div>
                 <div class="column">
-                    <img src="pics/login.png" class="vertical-images">
-                    <img src="pics/stat.png" class="vertical-images">
+                    <img src="pics/login.png" class="vertical-images" alt="Image 4">
+                    <img src="pics/stat.png" class="vertical-images" alt="Image 5">
                 </div>
             </div>
         </section>
         <section id="section4">
             <h2>The emotion Chart by Plutchik:</h2>
             <h2>A Structured Analysis of the Human Emotional Spectrum</h2>
-            <h2></h2>
             <div class="columns-container">
                 <div class="left-column">
                     <img src="pics/diagram.svg" alt="Diagrama Emoțiilor de Plutchik">
