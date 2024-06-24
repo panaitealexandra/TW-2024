@@ -69,7 +69,7 @@ $forms_result = mysqli_query($conn, $forms_query);
                             </li>
                         <?php endwhile; ?>
                     </ul>
-                    <a href="CreateForm.php">Create a new Feedback Form</a>
+                    <a href="CreateForm.html">Create a new Feedback Form</a>
                     <a href="FeedbackForms.php">Tell us what you think!</a>
 
                 </div>

@@ -67,8 +67,6 @@ $stmt->close();
                 <option value="anger">Anger</option>
                 <option value="anticipation">Anticipation</option>
             </select>
-            <label for="feedback_text">Your Feedback:</label>
-            <textarea id="feedback_text" name="feedback_text" required></textarea>
             <button type="submit">Submit Feedback</button>';
             }
             ?>
