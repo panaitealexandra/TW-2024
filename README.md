@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FeH (FeedbackHub)</title>
-
 </head>
 <body>
 
@@ -69,7 +68,7 @@
 
 <h3 id="product-functions">2.2 Product Functions</h3>
 
-<p>FeE includes the following main functionalities:
+<p>FeedbackHub includes the following main functionalities:
 
 </p>
 
