@@ -16,10 +16,11 @@
         <div class="navbar">
             <a href="#section1">Home</a>
             <a href="#section2">Purpose</a>
-            <a href="Login.html">Login</a>
             <a href="FeedbackForms.php">Feedback</a>
             <?php if ($isLoggedIn): ?>
                 <a href="Profil.php">Profile</a>
+            <?php else: ?>
+                <a href="Login.html">Login</a>
             <?php endif; ?>
             <a href="#footer">Contact</a>
         </div>

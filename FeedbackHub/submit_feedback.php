@@ -15,7 +15,7 @@ function createAnonymousUser($conn) {
 
     $stmt->bind_param('sss', $anon_username, $anon_email, $anon_password);
     if ($stmt->execute()) {
-        return $conn->insert_id; // Return the ID of the newly created anonymous user
+        return $conn->insert_id; 
     } else {
         die("Error creating anonymous user: " . htmlspecialchars($stmt->error));
     }
@@ -24,7 +24,6 @@ function createAnonymousUser($conn) {
 }
 
 if (!isset($_SESSION['user_id'])) {
-    // Check if an anonymous user already exists
     $check_anon_query = "SELECT id FROM users WHERE username LIKE 'anon_%' ORDER BY id DESC LIMIT 1";
     $result = $conn->query($check_anon_query);
 
@@ -32,7 +31,6 @@ if (!isset($_SESSION['user_id'])) {
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['id'];
     } else {
-        // Create a new anonymous user if none exists
         $_SESSION['user_id'] = createAnonymousUser($conn);
     }
 }
@@ -44,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emotion = $_POST['emotion'];
     $feedback_text = $_POST['feedback_text'];
 
-    // Verificăm dacă există deja un feedback pentru această combinație de user_id și form_id
     $check_query = "SELECT * FROM user_feedback WHERE user_id = ? AND form_id = ?";
     $check_stmt = $conn->prepare($check_query);
 
@@ -60,7 +57,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($check_result->num_rows > 0) {
         $message = "Feedback has already been submitted for this form.";
     } else {
-         //Incrementăm contorul emoției
         $count_query = "INSERT INTO feedback_counts (emotion, form_id, count) VALUES (?, ?, 1)
                         ON DUPLICATE KEY UPDATE count = count + 1, form_id = VALUES(form_id)";
 
@@ -73,7 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $count_stmt->bind_param('si', $emotion, $form_id);
 
         if ($count_stmt->execute()) {
-            // Salvăm feedback-ul utilizatorului în tabelul user_feedback
             $user_feedback_query = "INSERT INTO user_feedback (user_id, form_id, emotion, feedback_date, feedback_text) VALUES (?, ?, ?, NOW(), ?)";
             $user_feedback_stmt = $conn->prepare($user_feedback_query);
 
@@ -100,7 +95,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check_stmt->close();
     $conn->close();
 
-    // Redirecționăm înapoi către formular cu un mesaj de succes
     header("Location: feedback.php?id=$form_id&message=" . urlencode($message));
     exit();
 }
