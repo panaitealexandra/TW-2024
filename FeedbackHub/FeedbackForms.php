@@ -26,6 +26,7 @@ $result = mysqli_query($conn, $query);
                     echo '<p><strong>Category:</strong> ' . htmlspecialchars($row['category']) . '</p>';
                     echo '<p><strong>Feedback Period:</strong> ' . htmlspecialchars($row['start_date']) . ' to ' . htmlspecialchars($row['end_date']) . '</p>';
                     echo '<a href="feedback.php?id=' . htmlspecialchars($row['id']) . '">Provide Feedback</a>';
+                    echo '<a href="feedback_statistics.php?form_id=' . htmlspecialchars($row['id']) . '" class="button">See Stats</a>';
                     echo '</div>';
                 }
             } else {
@@ -35,6 +36,8 @@ $result = mysqli_query($conn, $query);
             mysqli_close($conn);
             ?>
         </div>
+        <p></p>
+        <a href="CreateForm.html" class="button">Do you want to create a new feedback form?</a>
     </div>
 </body>
 </html>

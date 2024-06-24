@@ -42,10 +42,21 @@ $stmt->close();
         <h3>Category: <?php echo htmlspecialchars($form['category']); ?></h3>
         <p>Feedback Period: <?php echo htmlspecialchars($form['start_date']); ?> to <?php echo htmlspecialchars($form['end_date']); ?></p>
         
+        <?php
+        if (isset($_GET['message'])) {
+            echo '<p>' . htmlspecialchars($_GET['message']) . '</p>';
+        }
+        ?>
+        
         <form action="submit_feedback.php" method="post">
             <input type="hidden" name="form_id" value="<?php echo htmlspecialchars($form_id); ?>">
             
-            <label for="emotion">Select your emotion:</label>
+            
+
+            <?php
+            if (!(isset($_GET['message']))) {
+                echo '
+                <label for="emotion">Select your emotion:</label>
             <select id="emotion" name="emotion" required>
                 <option value="joy">Joy</option>
                 <option value="trust">Trust</option>
@@ -56,8 +67,13 @@ $stmt->close();
                 <option value="anger">Anger</option>
                 <option value="anticipation">Anticipation</option>
             </select>
-            <button type="submit">Submit Feedback</button>
+            <label for="feedback_text">Your Feedback:</label>
+            <textarea id="feedback_text" name="feedback_text" required></textarea>
+            <button type="submit">Submit Feedback</button>';
+            }
+            ?>
         </form>
+       
     </div>
 </body>
 </html>
