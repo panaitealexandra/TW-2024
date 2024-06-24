@@ -1,0 +1,124 @@
+
+
+/* Basic styling */
+body {
+     margin: 0;
+            padding: 0;
+            min-height: 100vh; /* Facem ca body-ul să aibă înălțimea minimă a vizualizării pentru a umple întreaga înălțime a paginii */
+            display: flex;
+            flex-direction: column; /* Facem ca elementele să fie plasate în coloană */
+    font-family: Arial, sans-serif;
+    background-image: url('Feedback.jpeg');
+    background-size: cover; /* pentru a asigura că imaginea se va întinde pe întreaga pagină */
+    background-repeat: no-repeat ;
+    background-attachment: fixed;
+    background-position: center; /* pentru a centra imaginea pe pagina */
+    color: #fff; /* pentru a asigura contrastul textului cu imaginea de fundal */
+   
+}
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.container2 {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    
+    
+}
+
+
+header {
+    color: white;
+    padding: 20px 0;
+    
+}
+
+header h1 {
+    
+    text-align: center;
+    font-size: clamp (20px,10vw,50px);
+}
+
+header div i {
+    float: right;
+    margin-right: 20px;
+}
+
+header div nav ul {
+
+     display: flex; 
+     flex-direction:column;
+     justify-content:flex-start ;
+
+}
+
+
+/* Stiluri pentru meniu */
+#meniu {
+    color: #fff;
+    display: none;
+    position: absolute;
+    top: 150px;
+    right: 0;
+    width: 230px;
+    padding-top: 30px;
+    
+
+    
+}
+
+#meniu:target {
+    display: block;
+}
+
+/* Stiluri pentru butonul de meniu */
+#meniu-buton {
+    cursor: pointer;
+    color:#fff;
+}
+
+/* Stiluri pentru meniul drop-down */
+#meniu ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+#meniu ul li {
+     padding: 0;
+    
+ 
+    
+    
+}
+
+#meniu ul li a {
+     color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+
+}
+
+
+
+#main-content {
+     flex-grow: 1;
+    padding: 20px;
+}
+
+footer {
+        font-family: Arial, sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+

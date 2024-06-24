@@ -1,0 +1,89 @@
+body {
+    font-family: Montserrat, sans-serf; 
+    background-color: rgb(250, 214, 218);
+    margin: 0;
+    padding: 20px;
+}
+header{
+    align-items: center;
+    background-color: #fff;
+    margin-bottom: 20px;
+    margin-top:20px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+    }
+.navbar {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+.navbar a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-family: Montserrat, sans-serf; 
+}
+
+.navbar a:hover {
+    background-color: rgb(250, 214, 218);
+    color: black;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+h1 {
+    text-align: center;
+}
+
+.forms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.form {
+    background-color: #ecd8ed;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.form img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.form h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.form p {
+    margin: 5px 0;
+}
+
+.form a {
+    display: block;
+    text-align: center;
+    background-color: #8000ff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.form a:hover {
+    background-color: #0056b3;
+}
