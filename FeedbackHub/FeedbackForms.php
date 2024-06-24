@@ -37,7 +37,16 @@ $result = mysqli_query($conn, $query);
             ?>
         </div>
         <p></p>
-        <a href="CreateForm.html" class="button">Do you want to create a new feedback form?</a>
-    </div>
+        <?php
+        if(isset($_SESSION['user_id'])) {
+            echo  '<p>Do you want to create a new feedback form? <a href="CreateForm.html">Create</a></p>';
+
+        }
+        if (!isset($_SESSION['user_id'])) {
+                      echo  '<p>Do you want to create a new feedback form? <a href="Login.html">Login</a></p>';
+
+        }
+           ?>
+        </div>
 </body>
 </html>

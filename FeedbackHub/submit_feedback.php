@@ -2,8 +2,39 @@
 include 'config.php';
 session_start();
 
+function createAnonymousUser($conn) {
+    $anon_username = 'anon_' . uniqid();
+    $anon_email = $anon_username . '@example.com';
+    $anon_password = password_hash('anonymous', PASSWORD_DEFAULT);
+
+    $insert_user_query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($insert_user_query);
+    if ($stmt === false) {
+        die("Error preparing the statement: " . htmlspecialchars($conn->error));
+    }
+
+    $stmt->bind_param('sss', $anon_username, $anon_email, $anon_password);
+    if ($stmt->execute()) {
+        return $conn->insert_id; // Return the ID of the newly created anonymous user
+    } else {
+        die("Error creating anonymous user: " . htmlspecialchars($stmt->error));
+    }
+
+    $stmt->close();
+}
+
 if (!isset($_SESSION['user_id'])) {
-    die("User ID not found in session.");
+    // Check if an anonymous user already exists
+    $check_anon_query = "SELECT id FROM users WHERE username LIKE 'anon_%' ORDER BY id DESC LIMIT 1";
+    $result = $conn->query($check_anon_query);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $_SESSION['user_id'] = $row['id'];
+    } else {
+        // Create a new anonymous user if none exists
+        $_SESSION['user_id'] = createAnonymousUser($conn);
+    }
 }
 
 $user_id = $_SESSION['user_id'];
@@ -27,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $check_result = $check_stmt->get_result();
 
     if ($check_result->num_rows > 0) {
-        $message = "Feedback-ul a fost deja trimis pentru acest formular.";
+        $message = "Feedback has already been submitted for this form.";
     } else {
          //Incrementăm contorul emoției
         $count_query = "INSERT INTO feedback_counts (emotion, form_id, count) VALUES (?, ?, 1)
@@ -53,14 +84,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $user_feedback_stmt->bind_param('iiss', $user_id, $form_id, $emotion, $feedback_text);
 
             if ($user_feedback_stmt->execute()) {
-                $message = "Feedback completat cu succes!";
+                $message = "Feedback completed successfully!";
             } else {
-                $message = "Eroare la salvarea feedback-ului utilizatorului: " . htmlspecialchars($user_feedback_stmt->error);
+                $message = "Error saving user feedback: " . htmlspecialchars($user_feedback_stmt->error);
             }
 
             $user_feedback_stmt->close();
         } else {
-            $message = "Eroare la incrementarea contorului: " . htmlspecialchars($count_stmt->error);
+            $message = "Counter increment error: " . htmlspecialchars($count_stmt->error);
         }
 
         $count_stmt->close();
