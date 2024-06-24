@@ -1,3 +1,11 @@
+<?php
+session_start();
+include 'config.php';
+
+// Verificăm dacă utilizatorul este logat și numele de utilizator nu este "anonim"
+$isLoggedIn = isset($_SESSION['user_id']) && isset($_SESSION['username']) && $_SESSION['username'] !== 'anonim';
+?>
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
@@ -7,10 +15,6 @@
     <link rel="stylesheet" href="styleWellcome.css">
 </head>
 <body>
-    <?php
-    session_start();
-    $isLoggedIn = isset($_SESSION['user_id']);
-    ?>
     <!-- Continutul site-ului -->
     <header>
         <div class="navbar">
