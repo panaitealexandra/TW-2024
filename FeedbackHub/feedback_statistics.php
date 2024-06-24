@@ -51,6 +51,22 @@ foreach ($data as $emotion => $count) {
             padding: 0;
         }
 
+        button {
+            cursor: pointer;
+        }
+        button {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            background-color: rgb(211, 188, 233);
+            border: none;
+            border-radius: 10px;
+            height: 6vh;
+        }
+        button:hover {
+            background-color: rgb(186, 157, 210);
+            transform: scale(1.05);
+        }
+
         .container {
             width: 60%;
             margin: auto;
@@ -112,6 +128,12 @@ foreach ($data as $emotion => $count) {
         </ul>
     </div>
 
+    <div style="text-align: center; margin-top: 20px;">
+        <button onclick="exportData('html')">Export as HTML</button>
+        <button onclick="exportData('csv')">Export as CSV</button>
+        <button onclick="exportData('json')">Export as JSON</button>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const data = <?php echo json_encode($percentages); ?>;
@@ -158,6 +180,36 @@ foreach ($data as $emotion => $count) {
                 }
             });
         });
+
+        function exportData(format) {
+            const data = <?php echo json_encode($percentages); ?>;
+            let content;
+            let filename;
+
+            if (format === 'html') {
+                content = '<html><body><h1>Feedback Statistics</h1><ul>';
+                for (const [emotion, percentage] of Object.entries(data)) {
+                    content += `<li><strong>${emotion}:</strong> ${percentage}%</li>`;
+                }
+                content += '</ul></body></html>';
+                filename = 'feedback_statistics.html';
+            } else if (format === 'csv') {
+                content = 'Emotion,Percentage\n';
+                for (const [emotion, percentage] of Object.entries(data)) {
+                    content += `${emotion},${percentage}\n`;
+                }
+                filename = 'feedback_statistics.csv';
+            } else if (format === 'json') {
+                content = JSON.stringify(data, null, 2);
+                filename = 'feedback_statistics.json';
+            }
+
+            const blob = new Blob([content], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            link.click();
+        }
     </script>
 </body>
 </html>
