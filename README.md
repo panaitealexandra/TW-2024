@@ -44,7 +44,7 @@
             </ul>
         </li>
         
-    </ul>
+    
 </nav>
 
 <h1>Development of a Web Tool for Anonymous Feedback Collection</h1>
@@ -106,7 +106,7 @@ FeedbackHub operates in an environment specified as follows:
 </li>
     <li>      Operating Systems: Developed to run on Linux, Windows and macOS operating systems (if required).
 </li>
-
+</ol>
         <p>
              Software Components:
         </p>
@@ -121,7 +121,7 @@ FeedbackHub operates in an environment specified as follows:
 </li>
         </ol>
     
-</ol>
+
 <h3 id="assumptions">2.7 Assumptions and Dependencies</h3>
 
 <ul>
