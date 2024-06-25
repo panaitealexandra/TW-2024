@@ -1,0 +1,74 @@
+-- Creare baza de date 'feedbackhub', dacă nu există deja
+CREATE DATABASE IF NOT EXISTS feedbackhub;
+
+-- Folosirea bazei de date 'feedbackhub'
+USE feedbackhub;
+
+-- Tabelul 'users'
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+-- Tabelul 'feedback_forms'
+CREATE TABLE IF NOT EXISTS feedback_forms (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    form_name VARCHAR(255),
+    category VARCHAR(255),
+    image VARCHAR(255),
+    start_date DATETIME,
+    end_date DATETIME,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+-- Tabelul 'user_feedback'
+CREATE TABLE IF NOT EXISTS user_feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT,
+    form_id INT,
+    emotion VARCHAR(255),
+    feedback_text TEXT NULL,
+    feedback_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (form_id) REFERENCES feedback_forms(id)
+);
+-- Tabelul 'feedback_counts'
+CREATE TABLE IF NOT EXISTS feedback_counts (
+    emotion VARCHAR(255) PRIMARY KEY,
+    count INT,
+    form_id INT NULL,
+    FOREIGN KEY (form_id) REFERENCES feedback_forms(id)
+);
+
+
+
+
+INSERT INTO feedback_counts (emotion, count, form_id) VALUES
+('fear', 0, NULL),
+('sadness', 0, NULL),
+('surprise', 0, NULL),
+('trust', 0, NULL),
+('anger', 0, NULL),
+('anticipation', 0, NULL),
+('disgust', 0, NULL),
+('joy', 0, NULL),
+
+('ecstasy', 0, NULL),
+('admiration', 0, NULL),
+('terror', 0, NULL),
+('amazement', 0, NULL),
+('grief', 0, NULL),
+('loathing', 0, NULL),
+('rage', 0, NULL),
+('vigilance', 0, NULL),
+
+('serenity', 0, NULL),
+('acceptance', 0, NULL),
+('apprehension', 0, NULL),
+('distraction', 0, NULL),
+('pensiveness', 0, NULL),
+('boredom', 0, NULL),
+('annoyance', 0, NULL),
+('interest', 0, NULL);
+
